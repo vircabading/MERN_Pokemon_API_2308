@@ -6,3 +6,15 @@
   border-radius: 20px;
   padding: 0px 12px;
 }
+
+.bg-navbar-dark {
+  background-color: navy;
+}
+
+.bg-nav-button {
+  background-color: dodgerblue;
+}
+
+.text-yellow {
+  color: yellow;
+}
