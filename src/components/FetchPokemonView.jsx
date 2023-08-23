@@ -5,12 +5,13 @@ import '../App.css';
 //  FETCH POKEMON VIEW
 ///////////////////////////////////////////////////
 
-const FetchPokemonView = () => {
+const FetchPokemonView = (props) => {
     const [list, setList] = useState("");
 
     const handleClick = () => {
         let currentDate = new Date();
         console.log(`*** Pokemon Fetch: ${currentDate.toLocaleTimeString()}`);
+        // Fetch full list of pokemon from Pokemon API
         fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
             .then(response => response.json())
             .then(response => {
@@ -18,6 +19,7 @@ const FetchPokemonView = () => {
                 console.log(`*** Pokemon Fetch Just return now: ${currentDate.toLocaleTimeString()}`);
                 console.log(response);
                 setList(response.results);
+                props.getPokemonList(response.results)
             }).catch(err=>console.log(err));
     }
 
@@ -29,8 +31,8 @@ const FetchPokemonView = () => {
                     <h3 className='text-yellow'>Fetch Pokemon</h3>
                 </div>
             </div>
-            <hr />
-            <p>List: {JSON.stringify(list)}</p>
+            {/* <hr />
+            <p>List: {JSON.stringify(list)}</p> */}
         </div>
     )
 }
