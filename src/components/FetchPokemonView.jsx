@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../App.css';
 
 ///////////////////////////////////////////////////
@@ -6,10 +6,19 @@ import '../App.css';
 ///////////////////////////////////////////////////
 
 const FetchPokemonView = () => {
+    const [list, setList] = useState("");
 
     const handleClick = () => {
-        let currentDate = new  Date();
-        console.log(`*** Pokemon Fetch: ${ currentDate.toLocaleTimeString() }`);
+        let currentDate = new Date();
+        console.log(`*** Pokemon Fetch: ${currentDate.toLocaleTimeString()}`);
+        fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
+            .then(response => response.json())
+            .then(response => {
+                let currentDate = new Date();
+                console.log(`*** Pokemon Fetch Just return now: ${currentDate.toLocaleTimeString()}`);
+                console.log(response);
+                setList(response.results);
+            }).catch(err=>console.log(err));
     }
 
     return (
@@ -20,6 +29,8 @@ const FetchPokemonView = () => {
                     <h3 className='text-yellow'>Fetch Pokemon</h3>
                 </div>
             </div>
+            <hr />
+            <p>List: {JSON.stringify(list)}</p>
         </div>
     )
 }
