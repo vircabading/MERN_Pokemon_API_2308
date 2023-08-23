@@ -22,8 +22,6 @@ function App() {
       <NavBarView />
       {/* ///// Main Content Area //////////// */}
       <div className='container mt-4 p-2 round bg-white' >
-        <h1>Pokemon API</h1>
-        <br />
         <FetchPokemonView getPokemonList={getPokemonList} />
         <br />
         <ViewPokemonList listOfPokemon={listOfPokemon} className="mt-2"/>
