@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 import NavBarView from "./components/NavBarView";
 import FetchPokemonView from "./components/FetchPokemonView";
+import ViewPokemonList from "./components/ViewPokemonList";
 
 ///////////////////////////////////////////////////
 //  MAIN APPLICATION
@@ -24,8 +25,9 @@ function App() {
         <h1>Pokemon API</h1>
         <br />
         <FetchPokemonView getPokemonList={getPokemonList} />
+        <br />
+        <ViewPokemonList listOfPokemon={listOfPokemon} className="mt-2"/>
       </div>
-      <p>Pokemon List: {JSON.stringify(listOfPokemon)}</p>
     </main>
 
   );

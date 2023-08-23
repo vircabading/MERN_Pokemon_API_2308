@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../App.css';
 
 ///////////////////////////////////////////////////
@@ -6,7 +6,6 @@ import '../App.css';
 ///////////////////////////////////////////////////
 
 const FetchPokemonView = (props) => {
-    const [list, setList] = useState("");
 
     const handleClick = () => {
         let currentDate = new Date();
@@ -18,7 +17,6 @@ const FetchPokemonView = (props) => {
                 let currentDate = new Date();
                 console.log(`*** Pokemon Fetch Just return now: ${currentDate.toLocaleTimeString()}`);
                 console.log(response);
-                setList(response.results);
                 props.getPokemonList(response.results)
             }).catch(err=>console.log(err));
     }
@@ -31,8 +29,6 @@ const FetchPokemonView = (props) => {
                     <h3 className='text-yellow'>Fetch Pokemon</h3>
                 </div>
             </div>
-            {/* <hr />
-            <p>List: {JSON.stringify(list)}</p> */}
         </div>
     )
 }
